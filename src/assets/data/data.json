@@ -1,0 +1,12 @@
+[
+    {"cellName":"TransactionId", "cellType":"number","maxLength":22,"required":true},
+    {"cellName":"TransactionDate", "cellType":"datetime","maxLength":19,"required":true},
+    {"cellName":"TransactionAmount", "cellType":"number","maxLength":20,"required":true},
+    {"cellName":"DepositDate", "cellType":"date","maxLength":10,"required":false},
+    {"cellName":"DepositAmount", "cellType":"number","maxLength":5,"required":false},
+    {"cellName":"InvoiceId", "cellType":"number","maxLength":22,"required":true},
+    {"cellName":"InvoiceDate", "cellType":"datetime","maxLength":19,"required":true},
+    {"cellName":"InvoiceAmountBruto", "cellType":"number","maxLength":20,"required":true},
+    {"cellName":"InvoiceAmountNeto", "cellType":"percent","maxLength":5,"required":false},
+    {"cellName":"CommissionAmount", "cellType":"number","maxLength":5,"required":false}
+]

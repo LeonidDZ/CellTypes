@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="row">
+        <label for="" class="col-md-1">Select by: </label>
+        <select class="col-md-2" #searchByProperty (change)="searchByChanged(searchByProperty.value)">
+            <option value="" *ngFor="let prop of props" [value]="prop">{{getColName(prop)}}</option>
+        </select>
+        <label class="offset-md-1 col-md-1" for="">Search: </label>
+        <input class="col-md-2" type="text" [ngModel]="searchInput" (ngModelChange)="searchChanged($event)" />
+    </div>
+    <hr>
+    <div class="row">
+        <table class="table table-striped table-responsive col-*-12">
+            <thead>
+                <tr>
+                    <th>Cell Name</th>
+                    <th>Cell Type</th>
+                    <th>Max. Length</th>
+                    <th>Required</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let cell of selectedList">
+                    <td>{{cell.cellName}}</td>
+                    <td>{{cell.cellType}}</td>
+                    <td>{{cell.maxLength}}</td>
+                    <td>{{cell.required}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
