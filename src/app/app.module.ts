@@ -17,7 +17,7 @@ import { CellTypesComponent } from './cell-types/cell-types.component';
     BrowserModule,
     NgbModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
