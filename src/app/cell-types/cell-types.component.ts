@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 import { SearchModel } from '../models/search.model';
 import { SearchService } from '../services/search.service';
 
@@ -16,8 +16,8 @@ export class CellTypesComponent {
   public searchBy: string;
   public props: string[];
 
-public searchByProperty: string;
-
+  public searchByProperty: string;
+  @ViewChild('sIn') sIn: ElementRef;
 
   constructor(private searchService: SearchService) { }
 
@@ -45,17 +45,24 @@ public searchByProperty: string;
       })
     }
   }
+
   searchByChanged(val: string) {
     this.searchBy = val;
+    this.clearSelect();
   }
 
-  getColName(prop: string){
+  getColName(prop: string) {
     var name: any = this.firstToUpper(prop);
     name = name.split(/(?=[A-Z])/).join(' ');
     return name;
   }
 
-  firstToUpper(str: string){
-    return str.substr(0,1).toUpperCase() + str.substring(1);
+  firstToUpper(str: string) {
+    return str.substr(0, 1).toUpperCase() + str.substring(1);
+  }
+
+  clearSelect() {
+    this.sIn.nativeElement.value = '';
+    this.searchChanged('');
   }
 }
