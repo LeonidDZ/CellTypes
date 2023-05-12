@@ -8,7 +8,7 @@ import { SearchService } from '../services/search.service';
   styleUrls: ['./cell-types.component.css'],
   providers: [SearchService]
 })
-export class CellTypesComponent {
+export class CellTypesComponent implements OnInit, OnDestroy {
 
   public list: SearchModel[];
   public selectedList: SearchModel[];

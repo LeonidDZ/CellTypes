@@ -1,10 +1,10 @@
-import { Injectable, OnInit } from "@angular/core";
+import { Injectable } from "@angular/core";
 import {Subject} from "rxjs";
 import { SearchModel } from "../models/search.model";
 import { HttpClient } from '@angular/common/http';
 
 @Injectable()
-export class SearchService implements OnInit {
+export class SearchService {
 
     private dataPath: string = '../assets/data/data.json';
     public list: SearchModel[];
@@ -14,10 +14,6 @@ export class SearchService implements OnInit {
     constructor(private http: HttpClient) {
         this.readData();
      }
-
-    ngOnInit(): void {
-        this.readData();
-    }
 
     readData() {
         this.http.get<SearchModel[]>(this.dataPath).subscribe((data) => {
