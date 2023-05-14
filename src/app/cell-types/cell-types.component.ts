@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 import { SearchModel } from '../models/search.model';
 import { SearchService } from '../services/search.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-cell-types',
@@ -15,6 +16,7 @@ export class CellTypesComponent implements OnInit, OnDestroy {
   public searchInput: string;
   public searchBy: string;
   public props: string[];
+  private listChangedSubscription: Subscription;
 
   public searchByProperty: string;
   @ViewChild('sIn') sIn: ElementRef;
@@ -22,7 +24,7 @@ export class CellTypesComponent implements OnInit, OnDestroy {
   constructor(private searchService: SearchService) { }
 
   ngOnInit() {
-    this.searchService.listChanged.subscribe(inList => {
+  this.listChangedSubscription = this.searchService.listChanged.subscribe(inList => {
       this.list = inList;
       this.props = Object.keys(this.list[0]);
       this.searchChanged('');
@@ -31,7 +33,7 @@ export class CellTypesComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.searchService.listChanged.unsubscribe();
+    this.listChangedSubscription.unsubscribe();
   }
 
   searchChanged(event: string) {
